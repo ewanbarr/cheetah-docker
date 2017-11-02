@@ -23,7 +23,24 @@ RUN apt-get --no-install-recommends -y install \
     libfftw3-bin \
     libfftw3-dev \
     libfftw3-single3 \
-    expect    		     
+    cvs \
+    csh \
+    autotools-dev \
+    automake \
+    autogen \
+    autoconf \
+    hwloc \
+    libhwloc-dev \
+    libnuma-dev \
+    libnuma1 \
+    expect \
+    libtool \
+    gcc \
+    wget \
+    gsl-bin \
+    libgsl-dev \
+    libgsl2 \
+    pkg-config
 
 RUN mkdir /software/ && \
     cd /software/ && \
@@ -74,7 +91,3 @@ RUN cd /software/cheetah/ && \
     cmake -DENABLE_CUDA=true -DENABLE_PSRDADA=true ../ && \
     make -j 16
 
-WORKDIR $HOME
-RUN env | awk '{print "export ",$0}' > $HOME/.profile && \
-    echo "source $HOME/.profile" >> $HOME/.bashrc
-    USER root
